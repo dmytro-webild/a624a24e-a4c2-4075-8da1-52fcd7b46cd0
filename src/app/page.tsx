@@ -2,10 +2,10 @@
 
 import { ThemeProvider } from "@/providers/themeProvider/ThemeProvider";
 import ReactLenis from "lenis/react";
-import ContactSplit from '@/components/sections/contact/ContactSplit';
+import ContactSplitForm from '@/components/sections/contact/ContactSplitForm';
 import FaqDouble from '@/components/sections/faq/FaqDouble';
 import FeatureCardTwentyThree from '@/components/sections/feature/FeatureCardTwentyThree';
-import FooterLogoReveal from '@/components/sections/footer/FooterLogoReveal';
+import FooterBaseCard from '@/components/sections/footer/FooterBaseCard';
 import HeroBillboardCarousel from '@/components/sections/hero/HeroBillboardCarousel';
 import NavbarStyleFullscreen from '@/components/navbar/NavbarStyleFullscreen/NavbarStyleFullscreen';
 import ProductCardTwo from '@/components/sections/product/ProductCardTwo';
@@ -189,27 +189,28 @@ export default function LandingPage() {
   </div>
 
   <div id="contact" data-section="contact">
-      <ContactSplit
-      useInvertedBackground={false}
-      background={{
-        variant: "plain"}}
-      tag="Reservations"
+      <ContactSplitForm
       title="Reserve Your Table Now"
       description="Skip the phone calls and book your perfect evening instantly using our online reservation tool."
+      inputs={[
+        { name: "name", type: "text", placeholder: "Full Name", required: true },
+        { name: "email", type: "email", placeholder: "Email Address", required: true }
+      ]}
+      textarea={{ name: "message", placeholder: "Special requests or seating preferences?" }}
       imageSrc="http://img.b2bpic.net/free-photo/wedding-table-number-high-angle_23-2149436438.jpg"
-      mediaAnimation="slide-up"
-      mediaPosition="right"
       buttonText="Confirm Reservation"
+      className="py-20"
+      useInvertedBackground={false}
     />
   </div>
 
   <div id="footer" data-section="footer">
-      <FooterLogoReveal
+      <FooterBaseCard
       logoText="Bite&Bottle"
-      leftLink={{
-        text: "Privacy Policy",        href: "#"}}
-      rightLink={{
-        text: "Terms of Service",        href: "#"}}
+      columns={[
+          { title: "Quick Links", items: [{ label: "Privacy Policy", href: "#" }, { label: "Terms", href: "#" }] },
+          { title: "Company", items: [{ label: "About Us", href: "#" }, { label: "Careers", href: "#" }] }
+      ]}
     />
   </div>
       </ReactLenis>
